@@ -17,7 +17,6 @@ DB_PASS = os.getenv("DB_PASS")
 DB_NAME = os.getenv("DB_NAME")
 
 
-client = InfluxDBClient(DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -38,6 +37,7 @@ def write_data_to_db(measurement, tags, time, fields):
             - time = "2019-01-29T13:02:34.981Z"
             - fields = {"value": 23.5}
     """
+    client = InfluxDBClient(DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME)
     
     data = [{
         "measurement": measurement,
